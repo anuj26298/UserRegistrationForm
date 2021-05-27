@@ -27,9 +27,14 @@ public class UserRegistrationForm {
         boolean isValidEmail = registrationform.usersValidEmail(email);
         System.out.println(isValidEmail);
 
+        System.out.println("Enter Mobile Number along with country code:");
+        String mobileNumber = scanner.nextLine();
+        boolean isValidNum = registrationform.usersValidMobileNum(mobileNumber);
+        System.out.println(isValidNum);
+
     }
 
-    private static boolean usersValidFirstName(String firstName){
+    private static boolean usersValidFirstName(String firstName) {
         String regEx = "^[A-Z][a-z]{3,16}";
 
         Pattern pattern = Pattern.compile(regEx);
@@ -37,17 +42,25 @@ public class UserRegistrationForm {
         return matcher.matches();
     }
 
-    private static boolean usersValidLastName(String lastName){
+    private static boolean usersValidLastName(String lastName) {
         String regEx = "^[A-Z][a-z]{3,16}";
 
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(lastName);
         return matcher.matches();
     }
-    private static boolean usersValidEmail(String email){
+
+    private static boolean usersValidEmail(String email) {
         String regEx = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
+
+    private static boolean usersValidMobileNum(String mobileNumber) {
+        String regEx = "^[0-9]{2} [0-9]{10}";
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(mobileNumber);
         return matcher.matches();
     }
 }
