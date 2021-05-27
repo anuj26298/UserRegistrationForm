@@ -32,6 +32,11 @@ public class UserRegistrationForm {
         boolean isValidNum = registrationform.usersValidMobileNum(mobileNumber);
         System.out.println(isValidNum);
 
+        System.out.println("Enter Password:");
+        String password = scanner.nextLine();
+        boolean isValidPassword = registrationform.usersValidPassword(password);
+        System.out.println(isValidPassword);
+
     }
 
     private static boolean usersValidFirstName(String firstName) {
@@ -61,6 +66,13 @@ public class UserRegistrationForm {
         String regEx = "^[0-9]{2} [0-9]{10}";
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(mobileNumber);
+        return matcher.matches();
+    }
+
+    private static boolean usersValidPassword(String password){
+        String regEx = "^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$";
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(password);
         return matcher.matches();
     }
 }
