@@ -22,6 +22,11 @@ public class UserRegistrationForm {
         isValidName = registrationform.usersValidLastName(lastName);
         System.out.println(isValidName);
 
+        System.out.println("Enter email: ");
+        String email = scanner.nextLine();
+        boolean isValidEmail = registrationform.usersValidEmail(email);
+        System.out.println(isValidEmail);
+
     }
 
     private static boolean usersValidFirstName(String firstName){
@@ -37,6 +42,12 @@ public class UserRegistrationForm {
 
         Pattern pattern = Pattern.compile(regEx);
         Matcher matcher = pattern.matcher(lastName);
+        return matcher.matches();
+    }
+    private static boolean usersValidEmail(String email){
+        String regEx = "[a-zA-Z0-9._%-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,4}";
+        Pattern pattern = Pattern.compile(regEx);
+        Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 }
