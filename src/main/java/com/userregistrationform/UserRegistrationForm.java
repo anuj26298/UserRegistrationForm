@@ -1,6 +1,5 @@
+package com.userregistrationform;
 
-import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.*;
@@ -40,7 +39,7 @@ public class UserRegistrationForm {
     }
 
 
-    public boolean usersValidEmail(String email) {
+    public boolean usersValidEmail(String email) throws UserRegistrationFormExceptions{
         try {
             Pattern pattern = Pattern.compile(EMAIL_REGEX);
             if (pattern.matcher(email).matches())
@@ -54,7 +53,7 @@ public class UserRegistrationForm {
         }
     }
 
-    public boolean usersValidMobileNum(String mobileNumber) {
+    public boolean usersValidMobileNum(String mobileNumber) throws UserRegistrationFormExceptions {
         try {
             Pattern pattern = Pattern.compile(MOBILE_NUMBER_REGEX);
             if (pattern.matcher(mobileNumber).matches())
@@ -68,7 +67,7 @@ public class UserRegistrationForm {
         }
     }
 
-    public boolean usersValidPassword(String password) {
+    public boolean usersValidPassword(String password)  throws  UserRegistrationFormExceptions{
         try {
             if (password.length() < 8)
                 throw new UserRegistrationFormExceptions(UserRegistrationFormExceptions.ExceptionType.SHORT_ENTRY,
